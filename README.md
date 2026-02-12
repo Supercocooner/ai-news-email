@@ -4,9 +4,9 @@ Google NewsからAI関連ニュース（Gemini、ChatGPT、Claude、AIエージ�
 
 ## 機能
 
-- 📰 Google News RSSから最新AI関連記事を取得
-- 🌐 英語記事を自動で日本語に翻訳
-- 📧 HTML形式の見やすいメールで配信
+- 📰 Google News RSSから最新AI関連記事を取得（国内・海外それぞれ10件）
+- 🌐 海外記事のみ自動で日本語に翻訳
+- 📧 HTML形式の見やすいメールで配信（国内・海外セクション分離）
 - ⏰ GitHub Actionsで毎日自動実行（10:00, 17:00 JST）
 
 ## セットアップ手順
