@@ -6,6 +6,7 @@ import os
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from typing import List, Dict
+import pytz
 from datetime import datetime
 
 
@@ -48,7 +49,8 @@ def create_html_email(articles_ja: List[Dict], articles_en: List[Dict]) -> str:
     """
     記事リストからHTMLメール本文を作成（国内・海外）
     """
-    now = datetime.now().strftime("%Y年%m月%d日 %H:%M")
+    jst = pytz.timezone('Asia/Tokyo')
+    now = datetime.now(jst).strftime("%Y年%m月%d日 %H:%M")
     
     html = f"""
     <!DOCTYPE html>
@@ -131,7 +133,7 @@ def create_html_email(articles_ja: List[Dict], articles_en: List[Dict]) -> str:
     </head>
     <body>
         <h1>🤖 AI最新ニュース</h1>
-        <p>{now} 配信</p>
+        <p>{now} 配信 (JST)</p>
         
         {create_section_html("🇯🇵 国内ニュース", articles_ja)}
         {create_section_html("🇺🇸 海外ニュース", articles_en)}
@@ -160,8 +162,9 @@ def send_email(articles_ja: List[Dict], articles_en: List[Dict], recipient: str 
         return False
     
     # メール作成
+    jst = pytz.timezone('Asia/Tokyo')
     msg = MIMEMultipart('alternative')
-    msg['Subject'] = f"🤖 AI最新ニュース (国内/海外) - {datetime.now().strftime('%m/%d %H:%M')}"
+    msg['Subject'] = f"🤖 AI最新ニュース (国内/海外) - {datetime.now(jst).strftime('%m/%d %H:%M')}"
     msg['From'] = gmail_address
     msg['To'] = recipient
     
