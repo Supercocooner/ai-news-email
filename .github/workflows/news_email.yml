@@ -1,12 +1,12 @@
 name: AI News Email
 
 on:
-  schedule:
-    # UTC時間で指定（日本時間 = UTC + 9時間）
-    # JST 10:00 = UTC 01:00
-    # JST 17:00 = UTC 08:00
-    - cron: '0 1 * * *'
-    - cron: '0 8 * * *'
+#  schedule:
+#    # UTC時間で指定（日本時間 = UTC + 9時間）
+#    # JST 10:00 = UTC 01:00
+#    # JST 17:00 = UTC 08:00
+#    - cron: '0 1 * * *'
+#    - cron: '0 8 * * *'
   
   # 手動実行も可能
   workflow_dispatch:
